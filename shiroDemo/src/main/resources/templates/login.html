@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring boot Shiro Example </title>
+</head>
+<body>
+<div class="alert alert-success" th:if="${msg}" th:utext="${msg}"></div>
+<form th:action="@{/login}" method="post">
+    <div><label> 用户名 : <input type="text" name="username" placeholder="用户名"/> </label></div>
+    <div><label> 密  码 : <input type="password" name="password" placeholder="密码"/> </label></div>
+    <div><label> 验证码 : <input type="text" name="captcha" placeholder="验证码"/> </label></div>
+    <div><img style="width: 47%; display: inline;" th:src="@{/kaptcha.jpg}" title="点击切换" id="kaptcha-img"/></div>
+    <div><a onclick="refreshCaptcha()">看不清?换一个试试</a></div>
+    <div><label style="margin-top: 15px"> <input type="checkbox" name="rememberMe"/>&nbsp;&nbsp;&nbsp;记住我</label></div>
+    <div><input type="submit" value="登录"/></div>
+</form>
+</body>
+</html>

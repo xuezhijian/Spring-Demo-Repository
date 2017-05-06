@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="TestDB@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="TestDB">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="BiDeKeJi_Server_5"/>
+    <schema id="4" parent="1" name="demodb"/>
+    <schema id="5" parent="1" name="information_schema"/>
+    <schema id="6" parent="1" name="MyDatabase"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="sys"/>
+    <table id="10" parent="2" name="manager_info"/>
+    <table id="11" parent="2" name="manager_role_relationship"/>
+    <table id="12" parent="2" name="role_permission_relationship"/>
+    <table id="13" parent="2" name="sys_permission"/>
+    <table id="14" parent="2" name="sys_role"/>
+    <column id="15" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="16" parent="10" name="username">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="10" name="name">
+      <Position>3</Position>
+      <DataType>varchar(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="10" name="password">
+      <Position>4</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="10" name="salt">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="20" parent="10" name="state">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="21" parent="10" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="22" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="23" parent="10" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="24" parent="11" name="managerId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="11" name="roleId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="26" parent="11" name="fk_manager_info_has_sys_role_manager_info1_idx">
+      <ColNames>managerId</ColNames>
+    </index>
+    <index id="27" parent="11" name="fk_manager_info_has_sys_role_sys_role1_idx">
+      <ColNames>roleId</ColNames>
+    </index>
+    <key id="28" parent="11" name="PRIMARY">
+      <ColNames>managerId
+roleId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="29" parent="11" name="fk_manager_info_has_sys_role_manager_info1">
+      <ColNames>managerId</ColNames>
+      <RefSchemaName>TestDB</RefSchemaName>
+      <RefTableName>manager_info</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="30" parent="11" name="fk_manager_info_has_sys_role_sys_role1">
+      <ColNames>roleId</ColNames>
+      <RefSchemaName>TestDB</RefSchemaName>
+      <RefTableName>sys_role</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="31" parent="12" name="roleId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="12" name="permissionId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="33" parent="12" name="fk_sys_role_has_sys_permission_sys_permission1_idx">
+      <ColNames>permissionId</ColNames>
+    </index>
+    <index id="34" parent="12" name="fk_sys_role_has_sys_permission_sys_role1_idx">
+      <ColNames>roleId</ColNames>
+    </index>
+    <key id="35" parent="12" name="PRIMARY">
+      <ColNames>roleId
+permissionId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="36" parent="12" name="fk_sys_role_has_sys_permission_sys_role1">
+      <ColNames>roleId</ColNames>
+      <RefSchemaName>TestDB</RefSchemaName>
+      <RefTableName>sys_role</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="37" parent="12" name="fk_sys_role_has_sys_permission_sys_permission1">
+      <ColNames>permissionId</ColNames>
+      <RefSchemaName>TestDB</RefSchemaName>
+      <RefTableName>sys_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="38" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="13" name="permission">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="40" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="41" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="42" parent="14" name="role">
+      <Position>2</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="43" parent="14" name="description">
+      <Position>3</Position>
+      <DataType>varchar(55)|0</DataType>
+    </column>
+    <key id="44" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
