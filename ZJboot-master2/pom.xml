@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.xuezhijian2</groupId>
+    <artifactId>zj-spring-boot</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>ZJBoot</name>
+    <description>The Spring Boot project</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <!--  依赖版本  -->
+        <mybatis.version>3.4.1</mybatis.version>
+        <mybatis.spring.version>1.3.0</mybatis.spring.version>
+    </properties>
+
+    <build>
+        <!--打包后的名字-->
+        <finalName>${project.artifactId}-${version}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--fork:如果没有该项配置，热部署devtools不会起作用，即应用不会restart -->
+                    <fork>true</fork>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>springloaded</artifactId>
+                        <version>1.2.5.RELEASE</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- Mybatis generator 插件-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>3.4.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+        </plugins>
+
+        <resources>
+            <!--很重要，因为maven项目默认不生产xml文件，需要加下面这段才可以-->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <!-- 是否替换资源中的属性-->
+                <filtering>false</filtering>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 是否替换资源中的属性-->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--war启动-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!--spring boot 配置处理器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--监控和管理生产环境的模块,可以使用http、jmx、ssh、telnet等拉管理和监控应用。审计（Auditing）、
+            健康（health）、数据采集（metrics gathering）会自动加入到应用里面-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--devtools可以实现页面热部署（即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache=false来实现），
+               实现类文件热部署（类文件修改后不会立即生效），实现对属性文件的热部署。
+               即devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Email -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-velocity</artifactId>
+        </dependency>
+
+
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.log4jdbc</groupId>
+            <artifactId>log4jdbc</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.25</version>
+        </dependency>
+
+        <!--Mybatis 依赖-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <!--mapper-->
+        <!--<dependency>-->
+            <!--<groupId>tk.mybatis</groupId>-->
+            <!--<artifactId>mapper</artifactId>-->
+            <!--<version>3.4.0</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <!-- pagehelper -->
+        <!--<dependency>-->
+            <!--<groupId>com.github.pagehelper</groupId>-->
+            <!--<artifactId>pagehelper-spring-boot-starter</artifactId>-->
+            <!--<version>1.1.0</version>-->
+        <!--</dependency>-->
+        <!-- 项目采用了多数据源。所以这里使用这个版本的pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.6</version>
+        </dependency>
+
+
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <!-- Rabbit MQ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+
+        <!-- swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <!--工具类-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <!--httpclient-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <!-- jsoup HTML 解析 -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.10.1</version>
+        </dependency>
+        <!--图片处理框架,谷歌出品-->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>[0.4, 0.5)</version>
+        </dependency>
+        <!-- Gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <!-- utils -->
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-core</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

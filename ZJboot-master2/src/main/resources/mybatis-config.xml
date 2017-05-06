@@ -1,0 +1,140 @@
+<!--<?xml version="1.0" encoding="UTF-8" ?>-->
+<!--<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">-->
+<!--<configuration>-->
+    <!--&lt;!&ndash;&lt;!&ndash; 参数设置 &ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<settings>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 这个配置使全局的映射器启用或禁用缓存 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="cacheEnabled" value="true" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="lazyLoadingEnabled" value="true" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="aggressiveLazyLoading" value="true" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 允许或不允许多种结果集从一个单独的语句中返回（需要适合的驱动） &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="multipleResultSetsEnabled" value="true" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 使用列标签代替列名。不同的驱动在这方便表现不同。参考驱动文档或充分测试两种方法来决定所使用的驱动 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="useColumnLabel" value="true" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 允许JDBC支持生成的键。需要适合的驱动。如果设置为true则这个设置强制生成的键被使用，尽管一些驱动拒绝兼容但仍然有效（比如Derby） &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="useGeneratedKeys" value="true" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 指定MyBatis如何自动映射列到字段/属性。PARTIAL只会自动映射简单，没有嵌套的结果。FULL会自动映射任意复杂的结果（嵌套的或其他情况） &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="autoMappingBehavior" value="PARTIAL" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;当检测出未知列（或未知属性）时，如何处理，默认情况下没有任何提示，这在测试的时候很不方便，不容易找到错误。&ndash;&gt;-->
+        <!--&lt;!&ndash;NONE : 不做任何处理 (默认值)&ndash;&gt;-->
+        <!--&lt;!&ndash;WARNING : 警告日志形式的详细信息&ndash;&gt;-->
+        <!--&lt;!&ndash;FAILING : 映射失败，抛出异常和详细信息&ndash;&gt;-->
+        <!--&lt;!&ndash;&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 配置默认的执行器。SIMPLE执行器没有什么特别之处。REUSE执行器重用预处理语句。BATCH执行器重用语句和批量更新 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="defaultExecutorType" value="SIMPLE" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 设置超时时间，它决定驱动等待一个数据库响应的时间 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="defaultStatementTimeout" value="25000" />&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;设置查询返回值数量，可以被查询数值覆盖  &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="defaultFetchSize" value="100"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 允许在嵌套语句中使用分页&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="safeRowBoundsEnabled" value="false"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="mapUnderscoreToCamelCase" value="false"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;MyBatis 利用本地缓存机制（Local Cache）防止循环引用（circular references）和加速重复嵌套查询。 默认值为 SESSION，这种情况下会缓存一个会话中执行的所有查询。 若设置值为 STATEMENT，本地会话仅用在语句执行上，对相同 SqlSession 的不同调用将不会共享数据。&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="localCacheScope" value="SESSION"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 当没有为参数提供特定的 JDBC 类型时，为空值指定 JDBC 类型。 某些驱动需要指定列的 JDBC 类型，多数情况直接用一般类型即可，比如 NULL、VARCHAR&ndash;&gt;-->
+        <!--&lt;!&ndash;OTHER。&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="jdbcTypeForNull" value="OTHER"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 指定哪个对象的方法触发一次延迟加载。&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</settings>&ndash;&gt;-->
+
+    <!--&lt;!&ndash; 别名定义 &ndash;&gt;-->
+    <!--<typeAliases>-->
+        <!--<typeAlias alias="Integer" type="java.lang.Integer" />-->
+        <!--<typeAlias alias="Long" type="java.lang.Long" />-->
+        <!--<typeAlias alias="HashMap" type="java.util.HashMap" />-->
+        <!--<typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />-->
+        <!--<typeAlias alias="ArrayList" type="java.util.ArrayList" />-->
+        <!--<typeAlias alias="LinkedList" type="java.util.LinkedList" />-->
+    <!--</typeAliases>-->
+
+    <!--&lt;!&ndash;自定义类型处理器 &ndash;&gt;-->
+    <!--<typeHandlers>-->
+
+        <!--&lt;!&ndash;&lt;!&ndash;扫描整个包下的自定义类型处理器&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<package name="cn.xuezhijian2.core.mybatis."/>&ndash;&gt;-->
+
+        <!--<typeHandler handler="cn.xuezhijian2.core.mybatis.typeHandlers.EnumTypeHandler"-->
+                     <!--javaType="cn.xuezhijian2.demo.test.entity.enums.UserType" jdbcType="INTEGER"/>-->
+
+    <!--</typeHandlers>-->
+
+    <!--&lt;!&ndash;&lt;!&ndash;plugins插件之 分页拦截器  &ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<plugins>&ndash;&gt;-->
+        <!--&lt;!&ndash;<plugin interceptor="com.xhm.util.PageInterceptor"></plugin>&ndash;&gt;-->
+    <!--&lt;!&ndash;</plugins>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;&lt;!&ndash;配置environment环境&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<environments default="development">&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash; 环境配置1，每个SqlSessionFactory对应一个环境 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<environment id="development1">&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; 事务配置 type= JDBC、MANAGED 1.JDBC:这个配置直接简单使用了JDBC的提交和回滚设置。它依赖于从数据源得到的连接来管理事务范围。&ndash;&gt;-->
+                <!--&lt;!&ndash;2.MANAGED:这个配置几乎没做什么。它从来不提交或回滚一个连接。而它会让容器来管理事务的整个生命周期（比如Spring或JEE应用服务器的上下文）。 默认情况下它会关闭连接。然而一些容器并不希望这样，因此如果你需要从连接中停止它，将closeConnection属性设置为false &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<transactionManager type="JDBC" />&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; <transactionManager type="MANAGED">&ndash;&gt;-->
+                 <!--&lt;!&ndash;<property name="closeConnection" value="false"/>&ndash;&gt;-->
+                 <!--&lt;!&ndash;</transactionManager> &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; 数据源类型：type = UNPOOLED、POOLED、JNDI 1.UNPOOLED：这个数据源的实现是每次被请求时简单打开和关闭连接。它有一点慢，这是对简单应用程序的一个很好的选择，因为它不需要及时的可用连接。&ndash;&gt;-->
+                <!--&lt;!&ndash;不同的数据库对这个的表现也是不一样的，所以对某些数据库来说配置数据源并不重要，这个配置也是闲置的 2.POOLED：这是JDBC连接对象的数据源连接池的实现，用来避免创建新的连接实例时必要的初始连接和认证时间。&ndash;&gt;-->
+                <!--&lt;!&ndash;这是一种当前Web应用程序用来快速响应请求很流行的方法。 3.JNDI：这个数据源的实现是为了使用如Spring或应用服务器这类的容器，容器可以集中或在外部配置数据源，然后放置一个JNDI上下文的引用 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<dataSource type="UNPOOLED">&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="driver" value="com.mysql.jdbc.Driver" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="url" value="jdbc:mysql://localhost:3306/xhm" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="username" value="root" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="password" value="root" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 默认连接事务隔离级别 <property name="defaultTransactionIsolationLevel" value=""&ndash;&gt;-->
+                    <!--&lt;!&ndash;/> &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;</dataSource>&ndash;&gt;-->
+        <!--&lt;!&ndash;</environment>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;&lt;!&ndash; 环境配置2 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<environment id="development2">&ndash;&gt;-->
+            <!--&lt;!&ndash;<transactionManager type="JDBC" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<dataSource type="POOLED">&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="driver" value="com.mysql.jdbc.Driver" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="url" value="jdbc:mysql://localhost:3306/xhm" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="username" value="root" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="password" value="root" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 在任意时间存在的活动（也就是正在使用）连接的数量 &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="poolMaximumActiveConnections" value="10" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 任意时间存在的空闲连接数 &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="poolMaximumIdleConnections" value="5" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 在被强制返回之前，池中连接被检查的时间 &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="poolMaximumCheckoutTime" value="20000" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 这是给连接池一个打印日志状态机会的低层次设置，还有重新尝试获得连接，这些情况下往往需要很长时间（为了避免连接池没有配置时静默失败） &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="poolTimeToWait" value="20000" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 发送到数据的侦测查询，用来验证连接是否正常工作，并且准备接受请求。 &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="poolPingQuery" value="NO PING QUERY SET" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 这是开启或禁用侦测查询。如果开启，你必须用一个合法的SQL语句（最好是很快速的）设置poolPingQuery属性 &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="poolPingEnabled" value="false" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; 这是用来配置poolPingQuery多次时间被用一次。这可以被设置匹配标准的数据库连接超时时间，来避免不必要的侦测 &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="poolPingConnectionsNotUsedFor" value="0" />&ndash;&gt;-->
+            <!--&lt;!&ndash;</dataSource>&ndash;&gt;-->
+        <!--&lt;!&ndash;</environment>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;&lt;!&ndash; 环境配置3 &ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<environment id="development3">&ndash;&gt;-->
+            <!--&lt;!&ndash;<transactionManager type="JDBC" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<dataSource type="JNDI">&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="data_source" value="java:comp/env/jndi/mybatis" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="env.encoding" value="UTF8" />&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash; <property name="initial_context" value=""/> <property name="env.encoding"&ndash;&gt;-->
+                    <!--&lt;!&ndash;value="UTF8"/> &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;</dataSource>&ndash;&gt;-->
+        <!--&lt;!&ndash;</environment>&ndash;&gt;-->
+    <!--&lt;!&ndash;</environments>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;&lt;!&ndash; 映射文件，mapper的配置文件 &ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<mappers>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;直接映射到相应的mapper文件&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<mapper resource="com/xhm/mapper/UserMapper.xml"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;扫描包路径下所有xxMapper.xml文件&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<package name="com.xhm.mapper"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</mappers>&ndash;&gt;-->
+
+<!--</configuration>-->
+

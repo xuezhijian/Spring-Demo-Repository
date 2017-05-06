@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+Velocity模板
+<h1>${name}</h1>
+<h1>${age}</h1>
+
+</body>
+</html>

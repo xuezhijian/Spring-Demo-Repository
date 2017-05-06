@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>validator spring boot</title>
+</head>
+<body>
+
+<form action="/validator/login" method="post">
+    <p>姓名：<input type="text" name="name" /></p>
+    <p>密码：<input type="text" name="password"/></p>
+    <p><button type="submit">提交</button></p>
+</form>
+</body>

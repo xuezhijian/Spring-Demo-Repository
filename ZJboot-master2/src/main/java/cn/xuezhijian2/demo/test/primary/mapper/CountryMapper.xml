@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xuezhijian2.demo.test.primary.mapper.CountryMapper">
+
+
+
+
+    <select id="findById" parameterType="int" resultType="cn.xuezhijian2.demo.test.primary.entity.Country">
+        SELECT * FROM country WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultType="cn.xuezhijian2.demo.test.primary.entity.Country">
+        SELECT * FROM country
+    </select>
+
+</mapper>
